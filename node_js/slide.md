@@ -271,6 +271,22 @@
 
 !SLIDE javascript smaller
 
+## Inherit from EventEmitter
+
+    @@@ javascript
+    sys.inherits(TwitterNode, process.EventEmitter)
+
+    // now, TwitterNode objects have these methods:
+    twit.addListener(event, listener)
+
+    twit.removeListener(event, listener)
+
+    twit.listeners(event)
+
+    twit.emit(event, *args)
+
+!SLIDE javascript smaller
+
 ## Sample ##
 
     @@@ javascript
@@ -296,19 +312,26 @@
 
 !SLIDE javascript smaller
 
-## Inherit from EventEmitter
-
+## What happened to `this`? ##
     @@@ javascript
-    sys.inherits(TwitterNode, process.EventEmitter)
+    TwitterNode.prototype.stream = function() {
+      var client = this.createClient(this.port, this.host),
+         headers = process.mixin({}, this.headers),
+            node = this
 
-    // now, TwitterNode objects have these methods:
-    twit.addListener(event, listener)
+      // this = the TwitterNode instance
+      // var node = this
 
-    twit.removeListener(event, listener)
-
-    twit.listeners(event)
-
-    twit.emit(event, *args)
+      client.request("GET", this.requestUrl(), headers)
+        .finish(function(resp) {
+          resp.addListener('body', function(chunk) {
+            // this == the http request object
+            // we want to access the TwitterNode instance, 
+            // so use node instead
+            tweet = JSON.parse(chunk)
+            node.emit('tweet', tweet)
+          })
+        })
 
 !SLIDE javascript smaller
 
@@ -329,25 +352,3 @@
           }
         })
       })
-
-!SLIDE javascript smaller
-
-## What happened to `this`? ##
-    @@@ javascript
-    TwitterNode.prototype.stream = function() {
-      var client = this.createClient(this.port, this.host),
-         headers = process.mixin({}, this.headers),
-            node = this
-
-      // this = the TwitterNode instance
-      // var node = this
-
-      client.request("GET", this.requestUrl(), headers)
-        .finish(function(resp) {
-          resp.setBodyEncoding("utf8");
-          resp.addListener('body', function(chunk) {
-            // this == the http request object
-            // we want to access the TwitterNode instance, 
-            // so use node instead
-          })
-        })

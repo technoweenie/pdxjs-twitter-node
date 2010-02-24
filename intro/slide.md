@@ -25,4 +25,4 @@ pdx javascript admirers, 24 Feb 2010
 
 [![tender support](tender.png)](http://tenderapp.com)
 
-(not part of the dharma initiative)
+(not part of the dharma initiative... or is it?)

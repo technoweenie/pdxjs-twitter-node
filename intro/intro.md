@@ -13,8 +13,6 @@ pdx javascript admirers, 24 Feb 2010
 
 !SLIDE center
 
-# Open Source #
-
 [![calendar about nothing](calendar.png)](http://calendaraboutnothing.com/~technoweenie)
 
 !SLIDE center

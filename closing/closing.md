@@ -13,6 +13,7 @@
 * [Twitter-Node](http://github.com/technoweenie/twitter-node)
 * [Redis node.js client](http://github.com/fictorial/redis-node-client)
 * [Redis](http://code.google.com/p/redis/)
+* [Showoff](http://github.com/schacon/showoff) (presentation app)
 
 !SLIDE bullets
 
@@ -22,3 +23,7 @@
 * [Github](http://github.com/technoweenie)
 * [Bloggy Blog](http://techno-weenie.net)
 * [ENTP](http://entp.com) (workity work)
+
+!SLIDE center
+
+![Thanks!](big-thanks.jpg)

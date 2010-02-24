@@ -20,9 +20,9 @@
 
 [![hacking on mongrel with zed and _why](railsconf.jpeg)](http://www.flickr.com/photos/courtenay/176523889/)
 
-!SLIDE
+!SLIDE bullets
 
-## My Programming Experience in 2010 ##
+# My Perspective in 2010 #
 
 * Mostly dynamic, synchronous code (ruby, c#, python, php)
 * Javascript is mostly for UI effects and AJAX

@@ -8,7 +8,7 @@
 
 !SLIDE bullets incremental
 
-## What does Tweet Shouter do? ##
+# What does it do? #
 
 * Fetch tweets from http stream
 * Parse JSON into objects
@@ -28,7 +28,7 @@
 
 !SLIDE bullets incremental
 
-## What's Wrong? ##
+# What's Wrong? #
 
 * Not asynchronous
 * Closes HTTP connection
@@ -37,7 +37,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #2 ###
+# Attempt #2 #
 
     @@@ javascript
     var client = http.createClient(80, 'stream.twitter.com');
@@ -55,7 +55,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #2 ###
+# Attempt #2 #
 
     @@@ javascript
     var client = http.createClient(80, 'stream.twitter.com');
@@ -73,7 +73,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #2 ###
+# Attempt #2 #
 
     @@@ javascript
     var client = http.createClient(80, 'stream.twitter.com');
@@ -91,7 +91,7 @@
 
 !SLIDE bullets incremental
 
-## What's Wrong? ##
+# What's Wrong? #
 
 * <s>Not asynchronous</s>
 * <s>Closes HTTP connection</s>
@@ -100,7 +100,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #3 ###
+# Attempt #3 #
 
     @@@ javascript
     // store Twitter Stream API options
@@ -112,7 +112,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #3 ###
+# Attempt #3 #
 
     @@@ javascript
     TwitterNode.prototype.stream = function(callback) {
@@ -136,7 +136,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #3 ###
+# Attempt #3 #
 
     @@@ javascript
     TwitterNode.prototype.stream = function(callback) {
@@ -160,7 +160,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #3 ###
+# Attempt #3 #
 
     @@@ javascript
     TwitterNode.prototype.stream = function(callback) {
@@ -184,7 +184,7 @@
 
 !SLIDE javascript smaller
 
-### Using Attempt #3 ###
+# Using Attempt #3 #
 
     @@@ javascript
     // setup Twitter Stream API options
@@ -198,7 +198,7 @@
 
 !SLIDE javascript smaller
 
-### Using Attempt #3 ###
+# Using Attempt #3 #
 
     @@@ javascript
 
@@ -212,7 +212,7 @@
 
 !SLIDE bullets incremental
 
-## What's Wrong? ##
+# What's Wrong? #
 
 * <s>Not asynchronous</s>
 * <s>Closes HTTP connection</s>
@@ -236,7 +236,7 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE javascript smaller
 
-### How do you handle callbacks? ###
+# How about callbacks? #
 
     @@@ javascript
     twit.stream(tweetCallback, deleteCallback, limitCallback)
@@ -250,7 +250,7 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE javascript smaller
 
-### Let's emit some events! ###
+# Yuck, how about events? #
 
     @@@ javascript
     twit.addListener('tweet', function(tweet) {
@@ -265,7 +265,7 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE bullets incremental
 
-## Advantages ##
+# Advantages #
 
 * Add event listeners at any point in the lifetime of the `twit` object.
 * Add multiple listeners for the same event.
@@ -273,7 +273,7 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE javascript smaller
 
-## Inherit from EventEmitter
+# Inherit from EventEmitter
 
     @@@ javascript
     sys.inherits(TwitterNode, process.EventEmitter)
@@ -289,7 +289,7 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE javascript smaller
 
-## Sample ##
+# Sample #
 
     @@@ javascript
     var sys = require('sys')
@@ -314,15 +314,58 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE javascript smaller
 
-## What happened to `this`? ##
+# What happened to `this`? #
+
     @@@ javascript
     TwitterNode.prototype.stream = function() {
       var client = this.createClient(this.port, this.host),
          headers = process.mixin({}, this.headers),
             node = this
 
+
+      client.request("GET", this.requestUrl(), headers)
+        .finish(function(resp) {
+          resp.addListener('body', function(chunk) {
+
+
+
+            var tweet = JSON.parse(chunk)
+            node.emit('tweet', tweet)
+          })
+        })
+
+!SLIDE javascript smaller
+
+# What happened to `this`? #
+
+    @@@ javascript
+    TwitterNode.prototype.stream = function() {
+      var client = this.createClient(this.port, this.host),
+         headers = process.mixin({}, this.headers),
+            node = this
       // this = the TwitterNode instance
       // var node = this
+      client.request("GET", this.requestUrl(), headers)
+        .finish(function(resp) {
+          resp.addListener('body', function(chunk) {
+
+
+
+            var tweet = JSON.parse(chunk)
+            node.emit('tweet', tweet)
+          })
+        })
+
+!SLIDE javascript smaller
+
+# What happened to `this`? #
+
+    @@@ javascript
+    TwitterNode.prototype.stream = function() {
+      var client = this.createClient(this.port, this.host),
+         headers = process.mixin({}, this.headers),
+            node = this
+
 
       client.request("GET", this.requestUrl(), headers)
         .finish(function(resp) {
@@ -337,7 +380,7 @@ Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwik
 
 !SLIDE javascript smaller
 
-### Now, Emit Some Events ###
+# Now, Emit Some Events #
 
     @@@ javascript
     client.request("GET", this.requestUrl(), headers)

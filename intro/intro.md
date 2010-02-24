@@ -13,17 +13,19 @@ pdx javascript admirers, 24 Feb 2010
 
 !SLIDE center
 
+# Open Source #
+
 [![calendar about nothing](calendar.png)](http://calendaraboutnothing.com/~technoweenie)
 
 !SLIDE center
 
-### Lighthouse ###
+# Lighthouse #
 
 [![lighthouse](lighthouse_dharma.jpg)](http://lighthouseapp.com)
 
 !SLIDE center
 
-### Tender ###
+# Tender #
 
 [![tender support](tender.png)](http://tenderapp.com)
 

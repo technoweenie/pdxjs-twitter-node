@@ -23,7 +23,7 @@
 
 * [@technoweenie](http://twitter.com/technoweenie)
 * [Github](http://github.com/technoweenie)
-* [Bloggy Blog](http://techno-weenie.net)
+* [Blogity Blog](http://techno-weenie.net)
 * [ENTP](http://entp.com) (workity work)
 
 !SLIDE center

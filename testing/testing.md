@@ -6,7 +6,7 @@
 
 !SLIDE bullets incremental
 
-## Use a Promise ##
+# Use a Promise #
 
 * The simplest event-emitting object
 * Only two events: `success` and `error`

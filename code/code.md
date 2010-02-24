@@ -227,6 +227,8 @@
 
 ## Okay, not really ##
 
+Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwiki.twitter.com/Streaming-API-Documentation#ParsingResponses):
+
 * Streams also contain status deletion notices.  
       { "delete": { "status": { "id": 1234, "user_id": 3 } } }
 * Track streams may also contain limitation notices  
@@ -328,7 +330,7 @@
             // this == the http request object
             // we want to access the TwitterNode instance, 
             // so use node instead
-            tweet = JSON.parse(chunk)
+            var tweet = JSON.parse(chunk)
             node.emit('tweet', tweet)
           })
         })
@@ -342,7 +344,7 @@
       .finish(function(resp) {
         resp.setBodyEncoding("utf8");
         resp.addListener('body', function(chunk) {
-          tweet = JSON.parse(chunk)
+          var tweet = JSON.parse(chunk)
           if(tweet.limit) {
             node.emit('limit', tweet.limit)
           } else if(tweet['delete']) {

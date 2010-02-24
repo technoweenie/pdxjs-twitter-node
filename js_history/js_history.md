@@ -22,7 +22,7 @@
 
 !SLIDE bullets
 
-# My Perspective in 2010 #
+# Pre-Node.js Perspective #
 
 * Mostly dynamic, synchronous code (ruby, c#, python, php)
 * Javascript is mostly for UI effects and AJAX

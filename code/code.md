@@ -16,7 +16,7 @@
 
 !SLIDE javascript smaller
 
-### Attempt #1 ###
+# Attempt #1 #
 
     @@@ javascript
     // pseudo code, contrived example
@@ -223,16 +223,25 @@
 
 # DONE! #
 
+![shipped!](shipped.jpg)
+
 !SLIDE center
 
-## Okay, not really ##
+# Okay, not really #
 
-Let me crack an egg of knowledge about [the Twitter Streaming API](http://apiwiki.twitter.com/Streaming-API-Documentation#ParsingResponses):
+![boom](boom.jpg)
+
+!SLIDE bullets smaller
+
+# Okay, not really #
 
 * Streams also contain status deletion notices.  
-      { "delete": { "status": { "id": 1234, "user_id": 3 } } }
+* { "delete": { "status": { "id": 1234, "user_id": 3 } } }
 * Track streams may also contain limitation notices  
-      { "limit": { "track": 1234 } }
+* { "limit": { "track": 1234 } }
+
+
+Cracking an egg of knowledge about [the Twitter Streaming API](http://apiwiki.twitter.com/Streaming-API-Documentation#ParsingResponses):
 
 !SLIDE javascript smaller
 

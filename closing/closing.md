@@ -13,6 +13,8 @@
 * [Twitter-Node](http://github.com/technoweenie/twitter-node)
 * [Redis node.js client](http://github.com/fictorial/redis-node-client)
 * [Redis](http://code.google.com/p/redis/)
+* [How to Node](http://howtonode.org/) (great tips on writing Node.js apps)
+* [Fab.js](http://www.fabjs.org/) (awesome node.js web framework)
 * [Showoff](http://github.com/schacon/showoff) (presentation app)
 
 !SLIDE bullets

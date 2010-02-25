@@ -22,8 +22,8 @@
 # Stalk me! #
 
 * [@technoweenie](http://twitter.com/technoweenie)
-* [Github](http://github.com/technoweenie)
-* [Blogity Blog](http://techno-weenie.net)
+* [github.com/technoweenie](http://github.com/technoweenie)
+* [techno-weenie.net](http://techno-weenie.net) (Blogity Blog)
 * [ENTP](http://entp.com) (workity work)
 
 !SLIDE center
